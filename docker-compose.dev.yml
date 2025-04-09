@@ -1,0 +1,22 @@
+services:
+  dexpress:
+    image: mysql:latest
+    restart: 'no'
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: dexpress
+      MYSQL_USER: dexpress
+      MYSQL_PASSWORD: dexpress
+    healthcheck:
+      test: ['CMD', 'mysqladmin', 'ping', '-h', 'localhost']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    ports:
+      - 3307:3306
+    expose:
+      - 3307
+
+volumes:
+  dexpress:
+
